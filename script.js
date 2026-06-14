@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const emailElement = document.getElementById("emailValue");
 
-  // 이메일 주소 텍스트 클릭 시 복사
   if (emailElement) {
     emailElement.title = "클릭하면 이메일이 복사됩니다.";
 
@@ -25,6 +24,10 @@ function initCardEdgeGlow() {
 
   if (!card) return;
 
+  const glow = document.createElement("div");
+  glow.className = "card-edge-glow";
+  document.body.appendChild(glow);
+
   const glowRange = 90;
 
   document.addEventListener("mousemove", function (event) {
@@ -33,61 +36,69 @@ function initCardEdgeGlow() {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    const x = mouseX - rect.left;
-    const y = mouseY - rect.top;
-
-    const clampedX = Math.min(Math.max(x, 0), rect.width);
-    const clampedY = Math.min(Math.max(y, 0), rect.height);
-
     const isInsideX = mouseX >= rect.left && mouseX <= rect.right;
     const isInsideY = mouseY >= rect.top && mouseY <= rect.bottom;
+    const isInsideCard = isInsideX && isInsideY;
 
+    let glowX = mouseX;
+    let glowY = mouseY;
     let distanceToBorder = 0;
 
-    if (isInsideX && isInsideY) {
-      distanceToBorder = Math.min(
-        x,
-        rect.width - x,
-        y,
-        rect.height - y
-      );
-    } else {
-      const distanceX =
-        mouseX < rect.left
-          ? rect.left - mouseX
-          : mouseX > rect.right
-            ? mouseX - rect.right
-            : 0;
+    if (isInsideCard) {
+      const distanceLeft = mouseX - rect.left;
+      const distanceRight = rect.right - mouseX;
+      const distanceTop = mouseY - rect.top;
+      const distanceBottom = rect.bottom - mouseY;
 
-      const distanceY =
-        mouseY < rect.top
-          ? rect.top - mouseY
-          : mouseY > rect.bottom
-            ? mouseY - rect.bottom
-            : 0;
+      distanceToBorder = Math.min(
+        distanceLeft,
+        distanceRight,
+        distanceTop,
+        distanceBottom
+      );
+
+      if (distanceToBorder === distanceLeft) {
+        glowX = rect.left;
+        glowY = mouseY;
+      } else if (distanceToBorder === distanceRight) {
+        glowX = rect.right;
+        glowY = mouseY;
+      } else if (distanceToBorder === distanceTop) {
+        glowX = mouseX;
+        glowY = rect.top;
+      } else {
+        glowX = mouseX;
+        glowY = rect.bottom;
+      }
+    } else {
+      glowX = Math.min(Math.max(mouseX, rect.left), rect.right);
+      glowY = Math.min(Math.max(mouseY, rect.top), rect.bottom);
+
+      const distanceX = mouseX - glowX;
+      const distanceY = mouseY - glowY;
 
       distanceToBorder = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
     }
 
     if (distanceToBorder > glowRange) {
-      card.style.setProperty("--glow-opacity", "0");
+      glow.style.opacity = "0";
       return;
     }
 
     const glowPower = 1 - distanceToBorder / glowRange;
-    const glowOpacity = 0.2 + glowPower * 0.8;
+    const glowOpacity = 0.15 + glowPower * 0.85;
 
-    card.style.setProperty("--glow-x", `${clampedX}px`);
-    card.style.setProperty("--glow-y", `${clampedY}px`);
-    card.style.setProperty("--glow-opacity", glowOpacity.toFixed(2));
+    glow.style.left = `${glowX}px`;
+    glow.style.top = `${glowY}px`;
+    glow.style.opacity = glowOpacity.toFixed(2);
   });
 
   document.addEventListener("mouseleave", function () {
-    card.style.setProperty("--glow-opacity", "0");
+    glow.style.opacity = "0";
   });
 
   window.addEventListener("blur", function () {
-    card.style.setProperty("--glow-opacity", "0");
+    glow.style.opacity = "0";
   });
 }
 
