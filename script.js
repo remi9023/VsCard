@@ -1,16 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const emailElement = findEmailElement();
+  const emailElement = document.getElementById("emailValue");
   const emailButton = document.querySelector(".btn-mail");
 
-  // 이메일 텍스트 클릭 시 복사
   if (emailElement) {
-    emailElement.style.cursor = "pointer";
     emailElement.title = "클릭하면 이메일이 복사됩니다.";
 
-    emailElement.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      const emailText = getEmailText(emailElement);
+    emailElement.addEventListener("click", function () {
+      const emailText = emailElement.textContent.trim();
 
       if (!emailText) {
         showToast("복사할 이메일을 찾을 수 없습니다.");
@@ -21,12 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 메일 보내기 버튼 클릭 시 메일 앱을 열지 않고 이메일 주소 복사
   if (emailButton) {
     emailButton.addEventListener("click", function (event) {
       event.preventDefault();
 
-      const emailText = getEmailText(emailElement) || getEmailText(emailButton);
+      const emailText = emailButton.dataset.email;
 
       if (!emailText) {
         showToast("복사할 이메일을 찾을 수 없습니다.");
@@ -38,71 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// 이메일이 적힌 요소를 자동으로 찾는 함수
-function findEmailElement() {
-  const emailById = document.getElementById("emailValue") || document.getElementById("email");
-
-  if (emailById) {
-    return emailById;
-  }
-
-  const infoItems = document.querySelectorAll(".info-item");
-
-  for (const item of infoItems) {
-    const label = item.querySelector(".label");
-    const value = item.querySelector(".value");
-
-    if (!value) continue;
-
-    const labelText = label ? label.textContent.trim().toLowerCase() : "";
-    const valueText = value.textContent.trim();
-
-    const isEmailLabel =
-      labelText.includes("email") ||
-      labelText.includes("mail") ||
-      labelText.includes("이메일");
-
-    const hasEmailText = extractEmail(valueText);
-
-    if (isEmailLabel || hasEmailText) {
-      return value;
-    }
-  }
-
-  const mailLink = document.querySelector('a[href^="mailto:"]');
-
-  if (mailLink) {
-    return mailLink;
-  }
-
-  return null;
-}
-
-// 요소에서 이메일 텍스트만 추출하는 함수
-function getEmailText(element) {
-  if (!element) return "";
-
-  const href = element.getAttribute("href");
-
-  if (href && href.startsWith("mailto:")) {
-    return href.replace("mailto:", "").split("?")[0].trim();
-  }
-
-  const text = element.textContent.trim();
-  const email = extractEmail(text);
-
-  return email || text;
-}
-
-// 이메일 형식만 추출하는 함수
-function extractEmail(text) {
-  const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
-  const result = text.match(emailPattern);
-
-  return result ? result[0] : "";
-}
-
-// 클립보드 복사 함수
 function copyToClipboard(text) {
   if (!text) return;
 
@@ -122,7 +52,6 @@ function copyToClipboard(text) {
   fallbackCopyToClipboard(text);
 }
 
-// 구형 브라우저 대응용 복사 함수
 function fallbackCopyToClipboard(text) {
   const textarea = document.createElement("textarea");
 
@@ -146,7 +75,6 @@ function fallbackCopyToClipboard(text) {
   document.body.removeChild(textarea);
 }
 
-// 복사 완료 안내 메시지
 function showToast(message) {
   let toast = document.getElementById("copyToast");
 

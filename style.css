@@ -69,12 +69,59 @@ body {
 }
 
 .intro {
-  margin: 0 0 20px;
+  margin: 0 0 22px;
   font-size: 16px;
   line-height: 1.6;
   font-weight: 600;
   color: var(--text);
   word-break: keep-all;
+}
+
+.summary-section {
+  margin: 0 0 28px;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(191, 129, 243, 0.08);
+  text-align: left;
+}
+
+.summary-title {
+  margin: 0 0 18px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--point);
+}
+
+.summary-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summary-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: var(--text);
+  word-break: keep-all;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-key {
+  min-width: 42px;
+  color: var(--point);
+  font-weight: 900;
+}
+
+.summary-text {
+  color: var(--text);
 }
 
 .info-list {
@@ -122,6 +169,10 @@ body {
   font-weight: 700;
   color: var(--text);
   word-break: break-all;
+}
+
+#emailValue {
+  cursor: pointer;
 }
 
 .button-group {
@@ -182,6 +233,15 @@ body {
   .business-card {
     padding: 30px 22px 24px;
     border-radius: 24px;
+  }
+
+  .summary-item {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .summary-key {
+    min-width: auto;
   }
 
   .button-group {

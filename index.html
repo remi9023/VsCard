@@ -6,7 +6,6 @@
 
   <title>이창희 웹명함</title>
 
-  <!-- CSS 연결 -->
   <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -29,13 +28,34 @@
       게임을 통해 사람들과 소통하고 행복을 전하고 싶은 게임기획자 이창희입니다.
     </p>
 
+    <section class="summary-section">
+      <h2 class="summary-title">Key Point</h2>
+
+      <ul class="summary-list">
+        <li class="summary-item">
+          <span class="summary-key">분석</span>
+          <span class="summary-text">게임 시스템 분석 및 개선 제안</span>
+        </li>
+
+        <li class="summary-item">
+          <span class="summary-key">기획</span>
+          <span class="summary-text">MMORPG 신규 시스템 기획</span>
+        </li>
+
+        <li class="summary-item">
+          <span class="summary-key">제작</span>
+          <span class="summary-text">미니게임 제작 및 배포 경험</span>
+        </li>
+      </ul>
+    </section>
+
     <ul class="info-list">
       <li class="info-item">
         <div class="icon">✉️</div>
 
         <div>
           <p class="label">Email</p>
-          <p class="value">lch857953@gmail.com</p>
+          <p id="emailValue" class="value">lch857953@gmail.com</p>
         </div>
       </li>
 
@@ -52,7 +72,11 @@
     <div class="button-group">
       <a class="btn btn-call" href="tel:01058759023">전화하기</a>
 
-      <a class="btn btn-mail" href="mailto:lch857953@gmail.com">
+      <a
+        class="btn btn-mail"
+        href="mailto:lch857953@gmail.com"
+        data-email="lch857953@gmail.com"
+      >
         메일 보내기
       </a>
 
@@ -69,7 +93,6 @@
     <p class="footer">Game Planner Digital Business Card</p>
   </main>
 
-  <!-- JS 연결 -->
   <script src="./script.js"></script>
 </body>
 </html>
