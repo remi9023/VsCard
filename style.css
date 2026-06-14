@@ -177,11 +177,12 @@ body {
 
 .button-group {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 .btn {
+  width: 100%;
   min-height: 54px;
   padding: 14px 10px;
   border-radius: 15px;
@@ -191,32 +192,50 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-weight: 800;
+  color: #ffffff;
+  border: 1px solid rgba(191, 129, 243, 0.95);
+  background: linear-gradient(
+    135deg,
+    rgba(191, 129, 243, 0.95),
+    rgba(191, 129, 243, 0.55),
+    rgba(40, 24, 56, 0.95)
+  );
+  box-shadow: 0 8px 22px rgba(191, 129, 243, 0.18);
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
   will-change: transform;
 }
 
-.btn-call {
-  background: var(--point);
-  color: #ffffff;
+.btn-mail {
+  background: linear-gradient(
+    135deg,
+    rgba(191, 129, 243, 1),
+    rgba(174, 96, 239, 0.7),
+    rgba(36, 24, 48, 1)
+  );
 }
 
-.btn-mail {
-  background: var(--point-light);
-  color: var(--point);
-  border: 1px solid var(--line);
+.btn-portfolio {
+  background: linear-gradient(
+    135deg,
+    rgba(207, 156, 255, 0.95),
+    rgba(191, 129, 243, 0.65),
+    rgba(31, 22, 44, 1)
+  );
 }
 
 .btn-github {
-  grid-column: 1 / -1;
-  background: var(--point-light);
-  color: var(--point);
-  border: 1px solid var(--line);
+  background: linear-gradient(
+    135deg,
+    rgba(191, 129, 243, 0.9),
+    rgba(137, 82, 196, 0.72),
+    rgba(20, 20, 24, 1)
+  );
 }
 
 .btn:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(191, 129, 243, 0.35);
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }
 
 .footer {
@@ -242,13 +261,5 @@ body {
 
   .summary-key {
     min-width: auto;
-  }
-
-  .button-group {
-    grid-template-columns: 1fr;
-  }
-
-  .btn-github {
-    grid-column: auto;
   }
 }
