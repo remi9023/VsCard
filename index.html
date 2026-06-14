@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이창희 웹명함</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="business-card">
+    <div class="profile-wrap">
+      <img
+        id="profileImage"
+        class="profile-image"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Dog-1123016_960_720.jpg"
+        alt="이창희 프로필 이미지"
+      />
+    </div>
+
+    <label class="image-upload">
+      프로필 이미지 변경
+      <input id="profileInput" type="file" accept="image/*" />
+    </label>
+
+    <h1 class="name">이창희</h1>
+    <p class="job">게임기획</p>
+    <p class="intro">게임을 통해 사람들과 소통하고 행복을 전하고 싶은 게임기획자 이창희입니다.</p>
+
+    <ul class="info-list">
+      <li class="info-item">
+        <div class="icon">✉️</div>
+        <div>
+          <p class="label">Email</p>
+          <p class="value">lch857953@gmail.com</p>
+        </div>
+      </li>
+
+      <li class="info-item">
+        <div class="icon">📞</div>
+        <div>
+          <p class="label">Phone</p>
+          <p class="value">010-5875-9023</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="button-group">
+      <a class="btn btn-call" href="tel:01058759023">전화하기</a>
+      <a class="btn btn-mail" href="mailto:lch857953@gmail.com">메일 보내기</a>
+    </div>
+
+    <p class="footer">Game Planner Digital Business Card</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
