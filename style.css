@@ -34,6 +34,64 @@ body {
   border-radius: 28px;
   box-shadow: 0 18px 45px var(--shadow);
   text-align: center;
+
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-opacity: 0;
+}
+
+.business-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.business-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--glow-opacity);
+  background: radial-gradient(
+    circle 110px at var(--glow-x) var(--glow-y),
+    rgba(191, 129, 243, 1),
+    rgba(191, 129, 243, 0.55) 35%,
+    rgba(191, 129, 243, 0) 70%
+  );
+  transition: opacity 0.2s ease;
+  z-index: 3;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.business-card::after {
+  content: "";
+  position: absolute;
+  inset: -32px;
+  border-radius: 60px;
+  pointer-events: none;
+  opacity: var(--glow-opacity);
+  background: radial-gradient(
+    circle 150px at calc(var(--glow-x) + 32px) calc(var(--glow-y) + 32px),
+    rgba(191, 129, 243, 0.35),
+    rgba(191, 129, 243, 0.16) 35%,
+    rgba(191, 129, 243, 0) 70%
+  );
+  filter: blur(6px);
+  transition: opacity 0.2s ease;
+  z-index: -1;
 }
 
 .profile-wrap {
