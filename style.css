@@ -3,7 +3,7 @@
 }
 
 :root {
-  --bg: #f4f6f8;
+  --bg: #000000;
   --card: #ffffff;
   --text: #1f2937;
   --sub-text: #6b7280;
@@ -30,7 +30,7 @@ body {
   max-width: 390px;
   padding: 34px 28px 28px;
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1px solid #bf81f3;
   border-radius: 28px;
   box-shadow: 0 18px 45px var(--shadow);
   text-align: center;
@@ -78,7 +78,7 @@ body {
 
 .name {
   margin: 0;
-  font-size: 30px;
+  font-size: 31px;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
