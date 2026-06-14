@@ -1,30 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const profileInput = document.getElementById("profileInput");
-  const profileImage = document.getElementById("profileImage");
   const emailElement = findEmailElement();
   const emailButton = document.querySelector(".btn-mail");
-
-  // 프로필 이미지 업로드 기능
-  if (profileInput && profileImage) {
-    profileInput.addEventListener("change", function () {
-      const file = this.files[0];
-
-      if (!file) return;
-
-      if (!file.type.startsWith("image/")) {
-        alert("이미지 파일만 선택할 수 있습니다.");
-        return;
-      }
-
-      const reader = new FileReader();
-
-      reader.onload = function (event) {
-        profileImage.src = event.target.result;
-      };
-
-      reader.readAsDataURL(file);
-    });
-  }
 
   // 이메일 텍스트 클릭 시 복사
   if (emailElement) {
@@ -45,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 이메일 버튼 클릭 시 메일 앱을 열지 않고 이메일 주소 복사
+  // 메일 보내기 버튼 클릭 시 메일 앱을 열지 않고 이메일 주소 복사
   if (emailButton) {
     emailButton.addEventListener("click", function (event) {
       event.preventDefault();

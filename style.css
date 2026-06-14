@@ -30,7 +30,7 @@ body {
   max-width: 390px;
   padding: 34px 28px 28px;
   background: var(--card);
-  border: 1px solid #bf81f3;
+  border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: 0 18px 45px var(--shadow);
   text-align: center;
@@ -39,7 +39,7 @@ body {
 .profile-wrap {
   width: 118px;
   height: 118px;
-  margin: 0 auto 16px;
+  margin: 0 auto 28px;
 }
 
 .profile-image {
@@ -51,29 +51,6 @@ body {
   box-shadow: 0 8px 24px rgba(191, 129, 243, 0.25);
   background: var(--point-light);
   display: block;
-}
-
-.image-upload {
-  display: inline-block;
-  margin-bottom: 22px;
-  padding: 8px 13px;
-  border-radius: 999px;
-  background: #111111;
-  border: 1px solid var(--line);
-  color: var(--sub-text);
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.image-upload:hover {
-  background: var(--point-light);
-  color: var(--point);
-  border-color: #bf81f3;
-}
-
-.image-upload input {
-  display: none;
 }
 
 .name {
@@ -175,14 +152,14 @@ body {
 .btn-mail {
   background: var(--point-light);
   color: var(--point);
-  border: 1px solid #bf81f3;
+  border: 1px solid var(--line);
 }
 
 .btn-github {
   grid-column: 1 / -1;
   background: var(--point-light);
   color: var(--point);
-  border: 1px solid #bf81f3;
+  border: 1px solid var(--line);
 }
 
 .btn:hover {
