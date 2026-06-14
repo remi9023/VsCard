@@ -1,27 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const emailElement = document.getElementById("emailValue");
-  const emailButton = document.querySelector(".btn-mail");
 
+  // 이메일 주소 텍스트 클릭 시에만 복사
   if (emailElement) {
     emailElement.title = "클릭하면 이메일이 복사됩니다.";
 
     emailElement.addEventListener("click", function () {
       const emailText = emailElement.textContent.trim();
-
-      if (!emailText) {
-        showToast("복사할 이메일을 찾을 수 없습니다.");
-        return;
-      }
-
-      copyToClipboard(emailText);
-    });
-  }
-
-  if (emailButton) {
-    emailButton.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      const emailText = emailButton.dataset.email;
 
       if (!emailText) {
         showToast("복사할 이메일을 찾을 수 없습니다.");
