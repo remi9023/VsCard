@@ -91,6 +91,15 @@ body {
   color: var(--point);
 }
 
+.intro {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--text);
+  word-break: keep-all;
+}
+
 .info-list {
   display: flex;
   flex-direction: column;
@@ -145,12 +154,17 @@ body {
 }
 
 .btn {
+  min-height: 54px;
   padding: 14px 10px;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   font-size: 14px;
   font-weight: 800;
-  transition: 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  will-change: transform;
 }
 
 .btn-call {
@@ -164,9 +178,17 @@ body {
   border: 1px solid #bf81f3;
 }
 
+.btn-github {
+  grid-column: 1 / -1;
+  background: var(--point-light);
+  color: var(--point);
+  border: 1px solid #bf81f3;
+}
+
 .btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(0.98);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(191, 129, 243, 0.35);
+  filter: brightness(1.05);
 }
 
 .footer {
@@ -187,5 +209,9 @@ body {
 
   .button-group {
     grid-template-columns: 1fr;
+  }
+
+  .btn-github {
+    grid-column: auto;
   }
 }

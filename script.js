@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const profileInput = document.getElementById("profileInput");
   const profileImage = document.getElementById("profileImage");
-  const businessCard = document.querySelector(".business-card");
+  const emailElement = findEmailElement();
+  const emailButton = document.querySelector(".btn-mail");
 
   // 프로필 이미지 업로드 기능
   if (profileInput && profileImage) {
@@ -25,26 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 카드에 마우스를 올리면 부드럽게 떠오르는 효과
-  if (businessCard) {
-    businessCard.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-    businessCard.style.willChange = "transform";
-
-    businessCard.addEventListener("mouseenter", function () {
-      businessCard.style.transform = "translateY(-10px)";
-      businessCard.style.boxShadow = "0 24px 60px rgba(191, 129, 243, 0.35)";
-    });
-
-    businessCard.addEventListener("mouseleave", function () {
-      businessCard.style.transform = "translateY(0)";
-      businessCard.style.boxShadow = "0 18px 45px var(--shadow)";
-    });
-  }
-
-  // 이메일 요소 찾기
-  const emailElement = findEmailElement();
-  const emailButton = document.querySelector(".btn-mail");
-
   // 이메일 텍스트 클릭 시 복사
   if (emailElement) {
     emailElement.style.cursor = "pointer";
@@ -64,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 이메일 버튼 클릭 시 복사
+  // 이메일 버튼 클릭 시 메일 앱을 열지 않고 이메일 주소 복사
   if (emailButton) {
     emailButton.addEventListener("click", function (event) {
       event.preventDefault();
