@@ -103,6 +103,10 @@ body {
   word-break: keep-all;
 }
 
+.portfolio-action {
+  margin: 0 0 26px;
+}
+
 .summary-section {
   margin: 0 0 28px;
   padding: 22px 20px;
